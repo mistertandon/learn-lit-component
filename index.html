@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
-  
-<head>
-<meta charset="utf-8">
-  <title>Learn Lit component</title>
-</head>
-<body>
-<main>
-<my-component></my-component>
-</main>
-  
- <script type="module" src="./src/my-component.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, intial-scale=1.0"
+    />
+    <title>Learn Lit component</title>
+    <link
+      rel="stylesheet"
+      href="./dist/styles.css"
+    />
+  </head>
+  <body>
+    <main>
+      <article class="grid grid-rows-[75px,max(500px,calc(100vh-150px)),75px]">
+        <header>Header</header>
+        <section class="w-full flex flex-column">
+          <section class="w-[min(25%,_150px)]">Index</section>
+          <section class="w-[calc(100%_-_min(25%,_150px))]">
+            <my-component></my-component>
+          </section>
+        </section>
+        <footer>Footer</footer>
+      </article>
+    </main>
+    <script
+      type="module"
+      src="./src/my-component.js"
+    ></script>
+  </body>
 </html>
