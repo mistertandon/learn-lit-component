@@ -1,6 +1,6 @@
 module.exports = {
   corePlugins: {
-    // preflight: false,
+    preflight: false,
   },
   content: ["./index.html", "./src/*.{html, js}"],
   theme: {

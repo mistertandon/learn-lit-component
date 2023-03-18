@@ -2,7 +2,8 @@ import {
   LitElement,
   html,
 } from "https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module";
-class MyComponent extends LitElement {
+
+class BasicLit extends LitElement {
   render() {
     return html`
       <div class="flex flex-row">
@@ -16,17 +17,14 @@ class MyComponent extends LitElement {
           define a render() method that returns an HTML template.
         </p>
         <p>
-          In this example, we've defined a MyComponent class that extends
+          In this example, we've defined a BasicLit class that extends
           LitElement and overrides the render() method to return an HTML
           template using the html template tag from Lit.
         </p>
-        <img
-          class="block w-[max(50%,300px)]"
-          src="./../public/images/a_001_code.png"
-        />
       </div>
+      <script src="https://gist.github.com/mistertandon/16a514cce3b8f7b85a0bec1529218ae2.js"></script>
     `;
   }
 }
 
-customElements.define("my-component", MyComponent);
+customElements.define("basic-lit", BasicLit);

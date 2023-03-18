@@ -11,15 +11,88 @@
       rel="stylesheet"
       href="./dist/styles.css"
     />
+    <script>
+      let loadedComponent = { "basic-lit": "basic-lit" };
+      const loadLitComponent = (
+        componentName,
+        componentPath,
+        async = true,
+        type = "module"
+      ) => {
+        return new Promise((resolve, reject) => {
+          try {
+            if (loadedComponent.hasOwnProperty(`${componentName}`))
+              resolve({ status: true });
+
+            const scriptEle = document.createElement("script");
+
+            scriptEle.setAttribute("src", componentPath);
+            scriptEle.setAttribute("type", type);
+            scriptEle.setAttribute("async", async);
+
+            scriptEle.addEventListener("load", (event) => {
+              resolve({ status: true });
+            });
+
+            scriptEle.addEventListener("error", (event) => {
+              reject({
+                status: false,
+                message: `Failed to load the ${componentName}`,
+              });
+            });
+
+            document.body.appendChild(scriptEle);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      };
+
+      const componentLoadRequest = async (componentName, componentPath) => {
+        await loadLitComponent(componentName, componentPath);
+
+        document.getElementById(
+          "lit-component--container"
+        ).innerHTML = `<${componentName}></${componentName}>`;
+      };
+    </script>
   </head>
   <body>
     <main>
       <article class="grid grid-rows-[75px,max(500px,calc(100vh-150px)),75px]">
         <header class="place-self-center">Header</header>
-        <section class="w-full flex flex-column">
-          <section class="w-[min(25%,_150px)] flex flex-row flex-start">MyComponent</section>
-          <section class="w-[calc(100%_-_min(25%,_150px))]">
-            <my-component></my-component>
+        <section class="w-full flex flex-row">
+          <section class="w-[min(25%,_150px)] flex flex-col gap-y-2 px-4">
+            <button
+              class="border rounded-xl text-base"
+              onclick="componentLoadRequest('basic-lit', './src/basic-lit.js')"
+            >
+              Basic Lit
+            </button>
+            <button
+              class="border rounded-xl text-base"
+              onclick="componentLoadRequest('reactive-lit', './src/reactive-lit.js')"
+            >
+              Reactive Lit
+            </button>
+            <button
+              class="border rounded-xl text-base"
+              onclick="componentLoadRequest('style-lit', './src/style-lit.js')"
+            >
+              Styles Lit
+            </button>
+            <button
+              class="border rounded-xl text-base"
+              onclick="componentLoadRequest('styles-unsafe-css-lit', './src/styles-unsafe-css-lit.js')"
+            >
+              Styles unsafe CSS Lit
+            </button>
+          </section>
+          <section
+            class="w-[calc(100%_-_min(25%,_150px))]"
+            id="lit-component--container"
+          >
+            <basic-lit></basic-lit>
           </section>
         </section>
         <footer class="place-self-center">Footer</footer>
@@ -27,7 +100,7 @@
     </main>
     <script
       type="module"
-      src="./src/my-component.js"
+      src="./src/basic-lit.js"
     ></script>
   </body>
 </html>
