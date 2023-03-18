@@ -15,14 +15,14 @@
   <body>
     <main>
       <article class="grid grid-rows-[75px,max(500px,calc(100vh-150px)),75px]">
-        <header>Header</header>
+        <header class="place-self-center">Header</header>
         <section class="w-full flex flex-column">
-          <section class="w-[min(25%,_150px)]">Index</section>
+          <section class="w-[min(25%,_150px)] flex flex-row flex-start">MyComponent</section>
           <section class="w-[calc(100%_-_min(25%,_150px))]">
             <my-component></my-component>
           </section>
         </section>
-        <footer>Footer</footer>
+        <footer class="place-self-center">Footer</footer>
       </article>
     </main>
     <script

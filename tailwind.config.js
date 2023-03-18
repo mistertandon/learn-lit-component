@@ -2,7 +2,7 @@ module.exports = {
   corePlugins: {
     // preflight: false,
   },
-  content: ["./index.html", "./src/**/*.{html, js}"],
+  content: ["./index.html", "./src/*.{html, js}"],
   theme: {
     screens: {
       'sm': '640px',

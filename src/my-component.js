@@ -1,11 +1,32 @@
-import {LitElement, html} from "https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module";
+import {
+  LitElement,
+  html,
+} from "https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module";
 class MyComponent extends LitElement {
+  render() {
+    return html`
+      <div class="flex flex-row">
+        <h4>Lit Component: 1</h4>
+        <p>
+          In Lit, a component is a custom HTML element that encapsulates a piece
+          of functionality or UI in your application. A component is defined
+          using the LitElement base class, which provides a set of APIs and
+          lifecycle methods for working with the component. To define a basic
+          Lit component, you would typically extend the LitElement class and
+          define a render() method that returns an HTML template.
+        </p>
+        <p>
+          In this example, we've defined a MyComponent class that extends
+          LitElement and overrides the render() method to return an HTML
+          template using the html template tag from Lit.
+        </p>
+        <img
+          class="block w-[max(50%,300px)]"
+          src="./../public/images/a_001_code.png"
+        />
+      </div>
+    `;
+  }
+}
 
-render (){
-  return html`
-    <h1>Hello from lit component</h1>
-  `
-}
-}
-console.log('atleast-in');
-customElements.define('my-component', MyComponent);
+customElements.define("my-component", MyComponent);
