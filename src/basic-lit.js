@@ -4,6 +4,12 @@ import {
 } from "https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module";
 
 class BasicLit extends LitElement {
+
+  connectedCallback() {
+    super.connectedCallback();
+    console.log('BasicLit connected to the DOM');
+  }
+
   render() {
     return html`
       <div class="flex flex-row">
