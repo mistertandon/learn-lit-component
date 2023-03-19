@@ -28,7 +28,6 @@ class BasicLit extends LitElement {
           template using the html template tag from Lit.
         </p>
       </div>
-      <script src="https://gist.github.com/mistertandon/16a514cce3b8f7b85a0bec1529218ae2.js"></script>
     `;
   }
 }

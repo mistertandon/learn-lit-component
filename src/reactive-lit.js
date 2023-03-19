@@ -4,10 +4,16 @@ import {
 } from "https://unpkg.com/@polymer/lit-element@latest/lit-element.js?module";
 
 class ReactiveLit extends LitElement {
+
   static get properties() {
     return {
       count: { type: Number },
     };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    console.log('ReactiveLit connected to the DOM');
   }
 
   constructor() {

@@ -31,17 +31,20 @@ class DaughterLit extends LitElement {
     this.sonEventHandler = this.sonEventHandler.bind(this);
   }
 
-  connectedCallBack() {
-    super.connectedCallBack();
-    this.addEventListener("son-event", this.sonEventHandler);
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("son-event", this.sonEventHandler);
+    console.log("connectedCallback");
   }
 
-  disconnectedCallBack() {
-    super.disconnectedCallBack();
-    this.removeEventListener("son-event", this.sonEventHandler);
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("son-event", this.sonEventHandler);
+console.log('disconnectedCallback');
   }
 
-  sonEventHandler(data) {
+  sonEventHandler(event) {
+    const data = event.detail;
     console.log("sonData", data);
   }
 
@@ -62,10 +65,11 @@ class ParentLit extends LitElement {
     this.recieveDataEventHandler = this.recieveDataEventHandler.bind(this);
   }
 
-  recieveDataEventHandler(data) {
+  recieveDataEventHandler(eventData) {
+    const { detail: data } = eventData;
     console.log("parent", data);
-    const sonEvent = new CustomEvent("son-event", { detail: data });
-    this.dispatchEvent(sonEvent);
+
+    this.dispatchEvent(new CustomEvent("son-event", { detail: data }));
   }
 
   render() {
